@@ -10,7 +10,7 @@ let channel = null;
 
 const getChannel = async () => {
     if (!channel) {
-        const url = `amqp://${process.env.RABBITMQ_USER}:${process.env.RABBITMQ_PASSWORD}@${process.env.RABBITMQ_HOST}:${process.env.RABBITMQ_PORT}`;
+        const url = process.env.RABBITMQ_URL;
         connection = await amqplib.connect(url);
         channel = await connection.createChannel();
         await channel.assertQueue(QUEUE_NAME, { durable: true });
