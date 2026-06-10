@@ -1,0 +1,39 @@
+import fs from 'fs';
+import path from 'path';
+import multer from 'multer';
+import ClientError from '../../../exceptions/client-error.js';
+import process from 'process';
+ 
+export const UPLOAD_FOLDER = path.resolve(process.cwd(), 'src/services/uploads/files/documents');
+ 
+if (!fs.existsSync(UPLOAD_FOLDER)) {
+ fs.mkdirSync(UPLOAD_FOLDER, { recursive: true });
+}
+ 
+const storage = multer.diskStorage({
+ destination: (req, file, cb) => cb(null, UPLOAD_FOLDER),
+ filename: (req, file, cb) => {
+   cb(null, `${Date.now()}-${file.originalname}`);
+ }
+});
+
+export const upload = multer({
+ storage,
+ limits: { fileSize: 5 * 1024 * 1024 },
+ fileFilter: (req, file, cb) => {
+   if (file.mimetype && file.mimetype.startsWith('application/pdf')) cb(null, true);
+   else cb(new ClientError('File is required'), false);
+ }
+});
+
+export const deleteFile = (filename, next) => {
+  try {
+    fs.unlinkSync(path.join(UPLOAD_FOLDER, filename));
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+ 
+export default { UPLOAD_FOLDER, storage, upload };
