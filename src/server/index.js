@@ -11,7 +11,15 @@ const app = express();
 app.use(express.json());
 app.use('/documents', express.static('src/services/uploads/files/documents'));
 app.use(routes);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+const swaggerUiOptions = {
+  customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui.min.css',
+  customJs: [
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-bundle.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.11.0/swagger-ui-standalone-preset.min.js',
+  ]
+};
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
 
 app.use(ErrorHandler);
  
