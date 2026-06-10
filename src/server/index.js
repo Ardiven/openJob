@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/documents', express.static('src/services/uploads/files/documents'));
 app.use(routes);
 app.use(
-  "/",
+  "/api-docs",
   swaggerUi.serve,
   swaggerUi.setup(specs)
 );
