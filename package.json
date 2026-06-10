@@ -34,6 +34,8 @@
     "node-pg-migrate": "^8.0.4",
     "nodemailer": "^8.0.7",
     "pg": "^8.20.0",
-    "redis": "^5.12.1"
+    "redis": "^5.12.1",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }
