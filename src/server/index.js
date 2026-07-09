@@ -19,7 +19,7 @@ const swaggerUiOptions = {
   ]
 };
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
+app.use('/', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
 
 app.use(ErrorHandler);
  
