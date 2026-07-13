@@ -12,7 +12,17 @@ app.use('/documents', express.static('src/services/uploads/files/documents'));
 app.use(routes);
 
 // ─── Swagger UI Configuration ────────────────────────────────────────────────
+const SWAGGER_UI_VERSION = '5.18.2';
+const CDN = `https://cdn.jsdelivr.net/npm/swagger-ui-dist@${SWAGGER_UI_VERSION}`;
+
 const swaggerUiOptions = {
+  // Load Swagger UI assets from CDN to avoid Vercel serverless static-file issues
+  customJs: [
+    `${CDN}/swagger-ui-bundle.js`,
+    `${CDN}/swagger-ui-standalone-preset.js`,
+  ],
+  customCssUrl: `${CDN}/swagger-ui.css`,
+
   // Custom CSS to improve visual appearance
   customCss: `
     /* Header styling */
