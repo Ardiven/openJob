@@ -50,17 +50,6 @@ API ini menyediakan semua endpoint yang dibutuhkan untuk:
   },
 
   // ── Servers ─────────────────────────────────────────────────────────────────
-  servers: [
-    {
-      url: process.env.PRODUCTION_URL || 'http://localhost:3000',
-      description: process.env.NODE_ENV === 'production'
-        ? '🚀 Production server'
-        : '🖥️ Local development server',
-    },
-    ...(process.env.NODE_ENV !== 'production' && process.env.PRODUCTION_URL
-      ? [{ url: process.env.PRODUCTION_URL, description: '🚀 Production server' }]
-      : []),
-  ],
 
   // ── Tags (urutan tampilan di UI) ────────────────────────────────────────────
   tags: [
