@@ -35,18 +35,7 @@ API ini menyediakan semua endpoint yang dibutuhkan untuk:
 3. Klik tombol **Authorize** 🔒 di atas, masukkan \`accessToken\`
 4. Semua endpoint yang memerlukan autentikasi akan otomatis mengirim token
 
----
-
-### Base URL
-- **Development:** \`http://localhost:3000\`
     `,
-    contact: {
-      name: 'Open Job Team',
-      email: 'support@openjob.id',
-    },
-    license: {
-      name: 'ISC',
-    },
   },
 
   // ── Servers ─────────────────────────────────────────────────────────────────
